@@ -1,0 +1,9 @@
+we will a structure to handle the parsing,
+
+
+4 char * will handle the textures
+2 char **to hold the Ceeling / floor values until translated.
+1 char **to hold the map.
+
+
+we need a method to separate the map from the rest of arguments we are receiving.

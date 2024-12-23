@@ -7,8 +7,7 @@ static void f_c_checker(char *map)
     i = -1;
     while (map[++i])
     {
-        if (map[i] != ' ' || ft_isdigit(map[i] || 
-        map[i] != ','))
+        if (map[i] != ' ' && !ft_isdigit(map[i]) && map[i] != ',')
         {
             perror("Please check arguments for F or C\n");
             exit(1);
@@ -16,35 +15,35 @@ static void f_c_checker(char *map)
     }
 }
 
-static void	add_floor_color(char *map, t_data *data)
+static void	add_floor_color(char *map, t_data **data)
 {
 	char	*tmp_str;
 
 	tmp_str = ft_substr(map, 1, ft_strlen(map));
     f_c_checker(tmp_str);
-	data->f_colors = ft_split(tmp_str, ',');
-	if (matrix_counter(data->f_colors) != 3)
+	(*data)->f_colors = ft_split(tmp_str, ',');
+	if (matrix_counter((*data)->f_colors) < 3)
 	{
 		perror("Please Check Floor Color Argument\n");
 		exit(1);
 	}
 }
 
-static void	add_ceeling_color(char *map, t_data *data)
+static void	add_ceeling_color(char *map, t_data **data)
 {
 	char	*tmp_str;
 
 	tmp_str = ft_substr(map, 1, ft_strlen(map));
     f_c_checker(tmp_str);
-	data->c_colors = ft_split(tmp_str, ',');
-	if (matrix_counter(data->c_colors) != 3)
+	(*data)->c_colors = ft_split(tmp_str, ',');
+	if (matrix_counter((*data)->c_colors)  < 3)
 	{
 		perror("Please Check Floor Color Argument\n");
 		exit(1);
 	}
 }
 
-void	find_ceeling_floor(char **map, t_data *data)
+void	find_ceeling_floor(char **map, t_data **data)
 {
 	int i;
 

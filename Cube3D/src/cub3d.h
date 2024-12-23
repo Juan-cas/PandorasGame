@@ -22,12 +22,7 @@
 # define MLX_SYNC_IMAGE_WRITABLE 1
 # define MLX_SYNC_WIN_FLUSH_CMD 2
 # define MLX_SYNC_WIN_CMD_COMPLETED 3
-# define FLOOR_SPRITE "./lib/assets/floor.xpm"
-# define PLAYER_SPRITE "./lib/assets/player.xpm"
-# define ENEMY_SPRITE "./lib/assets/Juan-heroe-ogro.xpm"
-# define POTION_SPRITE "./lib/assets/collectible.xpm"
-# define EXIT_DOOR_SPRITE "./lib/assets/exit.xpm"
-# define WALL_SPRITE "./lib/assets/wall.xpm"
+
 
 # include "../lib/libft/libft.h"
 # include <fcntl.h>
@@ -69,9 +64,9 @@ typedef struct game_data
 void		malloc_check(void *ptr);
 
 // parsing
-void		parsing_control(char **map, t_data *data);
-void		find_textures(char **map, t_data *data);
-void		find_ceeling_floor(char **map, t_data *data);
+void		parsing_control(char **map, t_data **data);
+void		find_textures(char **map, t_data **data);
+void		find_ceeling_floor(char **map, t_data **data);
 
 // utils
 int			mod_strchr(char *s1, char *s2);
