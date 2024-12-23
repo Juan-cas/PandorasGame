@@ -12,6 +12,13 @@ MLX_DIR := $(LIB_DIR)/mlx_linux
 # Source files
 SRC_FILES := $(SRC_DIR)/main.c \
 $(SRC_DIR)/utils/get_next_line.c \
+$(SRC_DIR)/utils/matrix_counter.c \
+$(SRC_DIR)/utils/strchr.c \
+$(SRC_DIR)/parsing/parser_control.c \
+$(SRC_DIR)/parsing/find_ceeling_floor.c \
+$(SRC_DIR)/parsing/texture_finder.c \
+$(SRC_DIR)/errors/malloc_error.c \
+
 
 # Object files
 OBJ_FILES := $(patsubst $(SRC_DIR)/%.c, $(OBJ_DIR)/%.o, $(SRC_FILES))

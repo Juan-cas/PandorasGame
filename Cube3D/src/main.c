@@ -1,11 +1,10 @@
 #include "cub3d.h"
 
-
-static char **file_opener(char *file)
+static char	**file_opener(char *file)
 {
-	int fd;
-	char *big_line;
-	char **map_matrix;
+	int		fd;
+	char	*big_line;
+	char	**map_matrix;
 
 	fd = open(file, O_RDONLY);
 	big_line = NULL;
@@ -16,7 +15,6 @@ static char **file_opener(char *file)
 	}
 	big_line = get_next_line(fd);
 	map_matrix = ft_split(big_line, '\n');
-
 	return (map_matrix);
 }
 
@@ -28,11 +26,10 @@ int	main(int argc, char **argv)
 		return (1);
 	}
 	char **map;
+	t_data *data;
 
+	data = ft_calloc(1, sizeof(t_data));
 	map = file_opener(argv[1]);
-	int i = -1;
-
-	while (map[++i])
-		printf("the line is ->%s\n", map[i]);
+	parsing_control(map, data);
 	return (0);
 }

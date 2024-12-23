@@ -5,6 +5,12 @@
 # include <stdlib.h>
 # include <unistd.h>
 
+
+char *file_reader(int fd)
+{
+    
+}
+
 int main(void)
 {
     int fd;

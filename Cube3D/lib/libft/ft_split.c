@@ -80,8 +80,14 @@ char	**ft_split(char const *s, char c)
 	wordcount = ft_countword(s, c);
 	lst = (char **)malloc((wordcount + 1) * sizeof(char *));
 	if (!lst)
+	{
+		perror("malloc has failed\n");
 		exit(1);
+	}
 	if (!filler(s, lst, c))
-		exit (1);
+	{
+		perror("malloc has failed\n");
+		exit(1);
+	}
 	return (lst);
 }

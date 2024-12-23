@@ -9,7 +9,6 @@
 #  define BUFFER_SIZE 10000
 # endif
 
-
 # define K_A 0
 # define K_S 1
 # define K_D 2
@@ -40,58 +39,45 @@
 # include <stdlib.h>
 # include <unistd.h>
 
-typedef struct game_objects
+typedef struct mlx_pointers
 {
-	void				*mlx_ptr;
-	void				*win_ptr;
-	void				*textures[6];
-	int					winysize;
-	int					winxsize;
-	char				**map;
-	struct game_objects	*next;
-}						t_objects;
+	void	*mlx_ptr;
+	void	*win_ptr;
+	void	*textures[6];
+	int		winysize;
+	int		winxsize;
+}			t_mlx_p;
 
-void					solong(char **map, t_objects **status);
+typedef struct game_data
+{
+	char	*no_texture;
+	int		no_flag;
+	char	*so_texture;
+	int		so_flag;
+	char	*we_texture;
+	int		we_flag;
+	char	*ea_texture;
+	int		ea_flag;
+	char	**f_colors;
+	int		f_flag;
+	char	**c_colors;
+	int		c_flag;
+	char	**map;
+}			t_data;
 
 // error
-void					ft_error(int i);
+void		malloc_check(void *ptr);
 
 // parsing
-int						is0(char c);
-int						is1(char c);
-int						isc(char c, t_objects *status);
-int						ise(char c, t_objects *status);
-int						isp(char c, t_objects *status);
-void					map_check(char **map, t_objects **status);
-void					collx_y(size_t y, size_t x, t_objects **status);
-void					flood_fill(char **map, t_objects **status);
-void					final_check(char **map, t_objects **status);
-void					init_data(t_objects **status);
-void					find_coords_p(char **map, t_objects **status);
-void					find_coords_e(char **map, t_objects **status);
-void					free_coords(t_objects **nodes);
-void					lets_parse_data(char **map, t_objects **status);
-char					**lets_parse_map(char **argv);
-char					**init_parser(char **argv, t_objects **status);
+void		parsing_control(char **map, t_data *data);
+void		find_textures(char **map, t_data *data);
+void		find_ceeling_floor(char **map, t_data *data);
 
 // utils
-int						ft_exit(t_objects **status);
-char					**map_maker(int fd);
-char					*get_next_line(int fd);
-void					matrix_clear(char **matrix);
-int						line1(const char *line);
-void					init_status(t_objects **status);
-int						search_n(const char *s, int c);
-void					textures_init(t_objects **status, char **map_board);
-void					populate_window(t_objects **status);
-void					step_printer(int i);
-void check_exit(char **map, size_t py_c, size_t px_c, t_objects **status);
+int			mod_strchr(char *s1, char *s2);
+int			matrix_counter(char **matrix);
+char		*get_next_line(int fd);
 
 // movements
-int						key_press(int keycode, t_objects **status);
-void	move_north(t_objects **status);
-void	move_down(t_objects **status);
-void	move_left(t_objects **status);
-void	move_right(t_objects **status);
 
 #endif
